@@ -1,16 +1,37 @@
-var buttons = document.querySelectorAll('.buttons__item');
-var buttonClear = document.querySelectorAll('.buttons__item_clear');
-var result = document.querySelector('.result');
-var body = document.querySelector('body');
-buttons.forEach(function (button) {
-    button.addEventListener('click', function () {
-        if (button.textContent === "Clear") {
-            result.textContent = "";
+const buttons = document.querySelectorAll('.buttons__item');
+const buttonClear = document.querySelectorAll('.buttons__item_clear');
+const result = document.querySelector('.result');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let btnClick = button.textContent;
+        switch (btnClick) {
+            case "0":
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+            case "+":
+                {
+                    result.textContent += btnClick;
+                    break;
+                }
+            case "Clear": {
+                result.textContent = "";
+                console.log("Clear");
+                break;
+            }
+            case "=": {
+                result.textContent = eval(result.textContent);
+            }
         }
-        result.textContent += button.textContent;
     });
 });
-document.addEventListener('keypress', function (event) {
+document.addEventListener('keypress', (event) => {
     switch (event.key) {
         case "0": {
             console.log("Press - " + event.key);
@@ -54,3 +75,4 @@ document.addEventListener('keypress', function (event) {
         }
     }
 });
+// export {};
